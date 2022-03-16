@@ -53,7 +53,6 @@ void	*mlx_init();
 **  return (void *)0 if failed
 */
 
-
 /*
 ** Basic actions
 */

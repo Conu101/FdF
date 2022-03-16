@@ -6,31 +6,25 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:26:12 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/03/16 14:37:10 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/03/16 12:29:25 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-# include <math.h>
+# include "mlx.h"
+# include "fdf.h"
 
-#define WINDOW_WIDTH 640
-#define WINDOW_HEIGHT 360
-
-int main()
+int	main(void)
 {
-	int	sig;
+	void	*mlx;
+	void	*mlx_win;
+	t_data	img;
 
-	void *mlx = mlx_init();
-	void *win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Tutorial Window - Draw Line");
-
-	//draw_line(mlx, win, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH/2, 0, 0xFF32C3);
-	sig = 0;
-	while (sig <= 360 && ((WINDOW_WIDTH/2) * sin(sig)) >= 0 && ((WINDOW_WIDTH/2) * sin(sig)) <= WINDOW_WIDTH \
-	&& ((WINDOW_WIDTH/2) * (1 - cos(sig))) >= 0 && ((WINDOW_WIDTH/2) * (1 - cos(sig))) <= WINDOW_HEIGHT)
-	{
-		draw_line(mlx, win, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH/2 + (WINDOW_WIDTH/2) * sin(sig), (WINDOW_WIDTH/2) * (1 - cos(sig)), 0xFF32C3);
-		sig++;
-	}
-
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "** my window **");
+	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								&img.endian);
+	my_mlx_pixel_put(&img, 1920/2, 1080/2, 0x00FF0000);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }

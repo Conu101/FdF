@@ -6,13 +6,13 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:22:54 by ctrouve           #+#    #+#              #
-#    Updated: 2022/03/16 14:00:59 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/03/11 14:28:10 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = tutorial
 
-SOURCES = tutorial.c draw_line.c
+SOURCES = tutorial.c my_mlx_pixel_put.c
 
 OBJECTS = $(subst .c,.o,$(SOURCES))
 
