@@ -6,13 +6,13 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:16:27 by ctrouve           #+#    #+#              #
-#    Updated: 2022/03/18 14:31:00 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/03/18 15:02:02 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -O3 -c
+FLAGS = -Wall -Werror -Wextra -c
 INCLUDES = -I$(HEADERS_DIRECTORY)
 HEADERS_LIST = libft.h\
 	get_next_line.h
