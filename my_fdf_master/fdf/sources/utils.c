@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/09 12:39:31 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/09 12:39:32 by vbrazhni         ###   ########.fr       */
+/*   Created: 2022/04/06 12:16:31 by ctrouve           #+#    #+#             */
+/*   Updated: 2022/04/06 12:17:41 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 #include "libft.h"
 
 /*
-** Check is this char present in selected numeral system
+** Check if this char is present in selected numeral system
 */
 
-static int		ft_isdigit_base(char c, int base)
+static int	ft_isdigit_base(char c, int base)
 {
 	const char	*digits = "0123456789ABCDEF";
 	int			i;
@@ -39,7 +39,7 @@ static int		ft_isdigit_base(char c, int base)
 }
 
 /*
-** Check is this string contain prefix of its numeral system
+** Check if this string contains prefix of its numeral system
 */
 
 static t_bool	ft_has_prefix(const char *str, int base)
@@ -62,10 +62,10 @@ static t_bool	ft_has_prefix(const char *str, int base)
 }
 
 /*
-** Check is this string a number according to the selected numeral system
+** Check if this string is a number according to the selected numeral system
 */
 
-t_bool			ft_isnumber(char *str, int base)
+t_bool	ft_isnumber(char *str, int base)
 {
 	size_t		i;
 	size_t		digits;
@@ -94,7 +94,7 @@ t_bool			ft_isnumber(char *str, int base)
 ** Convert string to number according to the selected numeral system
 */
 
-int				ft_atoi_base(const char *str, int base)
+int	ft_atoi_base(const char *str, int base)
 {
 	unsigned long	result;
 	size_t			i;

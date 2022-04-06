@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/02 10:39:59 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/03/18 14:36:11 by ctrouve          ###   ########.fr       */
+/*   Created: 2022/04/05 14:33:40 by ctrouve           #+#    #+#             */
+/*   Updated: 2022/04/05 15:49:58 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int						read_map(const int fd,
 								t_coord_val **coords_stack,
 								t_map *map);
 
-void					push(t_coord_val **coords_stack,
+void					build_coord_list(t_coord_val **coords_stack,
 							t_coord_val *new);
 
 t_coord_val				*pop(t_coord_val **coords_stack);

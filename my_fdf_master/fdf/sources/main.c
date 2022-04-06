@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/29 19:37:47 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/03/18 13:46:13 by ctrouve          ###   ########.fr       */
+/*   Created: 2022/04/03 15:41:23 by ctrouve           #+#    #+#             */
+/*   Updated: 2022/04/03 15:41:29 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		main(int argc, char **argv)
 		setup_controls(fdf);
 		mlx_loop(fdf->mlx);
 	}
-	terminate(ERR_USAGE);
+	else
+		terminate(ERR_USAGE);
 	return (0);
 }

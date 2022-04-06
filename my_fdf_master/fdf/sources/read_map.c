@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 15:27:20 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/06 15:27:21 by vbrazhni         ###   ########.fr       */
+/*   Created: 2022/04/03 15:46:32 by ctrouve           #+#    #+#             */
+/*   Updated: 2022/04/05 20:44:14 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 ** Free array that was returned by ft_strsplit()
 */
 
-static void			free_strsplit_arr(char **arr)
+static void	free_strsplit_arr(char **arr)
 {
 	size_t i;
 
@@ -67,19 +67,18 @@ static t_coord_val	*new_coord(char *s)
 
 /*
 ** Get coordinate values from line, create t_coord_val elements
-** and them add to stack
+** and add them to stack
 */
 
-static void			parse_line(char **coords_line,
-							t_coord_val **coords_stack,
-							t_map *map)
+static void	parse_line(char **coords_line, t_coord_val **coords_stack, \
+t_map *map)
 {
 	int	width;
 
 	width = 0;
 	while (*coords_line)
 	{
-		push(coords_stack, new_coord(*(coords_line++)));
+		build_coord_list(coords_stack, new_coord(*(coords_line++)));
 		width++;
 	}
 	if (map->height == 0)
@@ -89,18 +88,16 @@ static void			parse_line(char **coords_line,
 }
 
 /*
-** Read map from file line by line
+** Read map from file line by line and check if valid, set map height.
 */
 
-int					read_map(const int fd,
-							t_coord_val **coords_stack,
-							t_map *map)
+int	read_map(const int fd, t_coord_val **coords_stack, t_map *map)
 {
 	char	*line;
-	int		result;
+	int		gnl_ret;
 	char	**coords_line;
 
-	while ((result = get_next_line(fd, &line)) == 1)
+	while ((gnl_ret = get_next_line(fd, &line)) == 1)
 	{
 		if (!(coords_line = ft_strsplit(line, ' ')))
 			terminate(ERR_MAP_READING);
@@ -111,5 +108,5 @@ int					read_map(const int fd,
 	}
 	if (!(*coords_stack))
 		terminate(ERR_MAP);
-	return (result);
+	return (gnl_ret);
 }

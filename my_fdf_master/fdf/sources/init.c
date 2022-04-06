@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/10 17:19:02 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/10 17:19:03 by vbrazhni         ###   ########.fr       */
+/*   Created: 2022/04/03 15:41:37 by ctrouve           #+#    #+#             */
+/*   Updated: 2022/04/06 12:07:31 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 /*
 ** "fdf.h" for t_map type, terminate(), t_fdf type, WIDTH macros, HEIGHT macros,
@@ -27,10 +28,9 @@
 #include "error_message.h"
 
 /*
-** Initialize t_map element
+** Attribute all initial values to t_map element = initialize.
 */
-
-t_map		*map_init(void)
+t_map	*map_init(void)
 {
 	t_map	*map;
 
@@ -49,8 +49,7 @@ t_map		*map_init(void)
 /*
 ** Initialize t_fdf element
 */
-
-t_fdf		*fdf_init(t_map *map)
+t_fdf	*fdf_init(t_map *map)
 {
 	t_fdf	*fdf;
 
@@ -58,7 +57,7 @@ t_fdf		*fdf_init(t_map *map)
 		terminate(ERR_FDF_INIT);
 	if (!(fdf->mlx = mlx_init()))
 		terminate(ERR_FDF_INIT);
-	if (!(fdf->win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, "FdF")))
+	if (!(fdf->win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, "FdF Conu")))
 		terminate(ERR_FDF_INIT);
 	if (!(fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT)))
 		terminate(ERR_FDF_INIT);
@@ -73,7 +72,6 @@ t_fdf		*fdf_init(t_map *map)
 /*
 ** Initialize t_camera element
 */
-
 t_camera	*camera_init(t_fdf *fdf)
 {
 	t_camera	*camera;

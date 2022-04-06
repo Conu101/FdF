@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/09 12:48:53 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/09 12:48:54 by vbrazhni         ###   ########.fr       */
+/*   Created: 2022/04/04 16:06:45 by ctrouve           #+#    #+#             */
+/*   Updated: 2022/04/05 15:49:04 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** Add t_coord_val element to stack
 */
 
-void		push(t_coord_val **coords_stack, t_coord_val *new)
+void	build_coord_list(t_coord_val **coords_stack, t_coord_val *new)
 {
 	if (coords_stack)
 	{
