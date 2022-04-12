@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 12:46:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/06 12:46:34 by ctrouve          ###   ########.fr       */
+/*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
+/*   Updated: 2022/04/12 17:02:02 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 {
 	int		i;
 
-	if (x >= MENU_WIDTH && x < WIDTH && y >= 0 && y < HEIGHT)
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
 		i = (x * fdf->bits_per_pixel / 8) + (y * fdf->size_line);
 		fdf->data_addr[i] = color;
@@ -74,7 +74,7 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 }
 
 /*
-** Draw background colors (Menu background + main background)
+** Draw background color 
 */
 
 static void	draw_background(t_fdf *fdf)
@@ -87,7 +87,7 @@ static void	draw_background(t_fdf *fdf)
 	i = 0;
 	while (i < HEIGHT * WIDTH)
 	{
-		image[i] = (i % WIDTH < MENU_WIDTH) ? MENU_BACKGROUND : BACKGROUND;
+		image[i] = BACKGROUND;
 		i++;
 	}
 }
@@ -96,7 +96,7 @@ static void	draw_background(t_fdf *fdf)
 ** Draw image
 */
 
-void	draw(t_map *map, t_fdf *fdf)
+void	draw_img(t_map *map, t_fdf *fdf)
 {
 	int		x;
 	int		y;
@@ -109,15 +109,16 @@ void	draw(t_map *map, t_fdf *fdf)
 		while (x < map->width)
 		{
 			if (x != fdf->map->width - 1)
-				draw_line(project(new_point(x, y, map), fdf),
-					project(new_point(x + 1, y, map), fdf), fdf);
+				draw_line(new_point(x, y, map),\
+				new_point(x + 1, y, map), fdf);
 			if (y != fdf->map->height - 1)
-				draw_line(project(new_point(x, y, map), fdf),
-					project(new_point(x, y + 1, map), fdf), fdf);
+				draw_line(new_point(x, y, map),\
+				new_point(x, y + 1, map), fdf);
 			x++;
 		}
 		y++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
-	print_menu(fdf);
+	//print_menu(fdf);
 }
+
