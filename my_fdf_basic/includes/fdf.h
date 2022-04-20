@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:48:00 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/20 13:07:35 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/20 13:59:54 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef enum
 
 
 void	terminate(char *s);
-//int		close_prgm(int keycode, t_fdf *fdf);
 t_map	*map_init(void);
 int		map_populate(const int fd, t_coord **coords_stack, t_map *map);
 void	stack_to_arrays(t_coord **coords_stack, t_map *map);

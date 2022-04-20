@@ -6,21 +6,18 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:58:37 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/19 17:15:42 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/20 14:41:53 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** "fdf.h" for t_map type, terminate(), t_fdf type, WIDTH macros, HEIGHT macros
+** "fdf.h" for t_map type, terminate()
 ** "libft.h" for ft_memalloc(), NULL macros ("libft.h" includes <string.h>)
-** "mlx.h" for mlx_init(), mlx_new_window(), mlx_new_image()
-**  and mlx_get_data_addr()
-** "error_message.h" for ERR_MAP_INIT macros and ERR_FDF_INIT macros
+** "errors.h" for ERR_MAP_INIT macro
 */
 
 #include "fdf.h"
 #include "libft.h"
-#include "mlx.h"
 #include "errors.h"
 
 /*
@@ -30,7 +27,8 @@ t_map	*map_init(void)
 {
 	t_map	*map;
 
-	if (!(map = (t_map *)ft_memalloc(sizeof(t_map))))
+	map = (t_map *)ft_memalloc(sizeof(t_map));
+	if (!map)
 		terminate(ERR_MAP_INIT);
 	map->width = 0;
 	map->height = 0;

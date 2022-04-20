@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 22:52:25 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/19 16:33:06 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/20 15:14:51 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **  ft_strsplit(), ft_atoi(), NULL macros ("libft.h" includes <string.h>)
 **  and ft_strdel()
 ** "get_next_line.h" for get_next_line()
-** "error_message.h" for ERR_MAP_READING macros and ERR_MAP macros
+** "errors.h" for ERR_MAP_READING and ERR_MAP macros
 ** <stdlib.h> for free()
 */
 
@@ -33,7 +33,7 @@
 
 static void	free_strsplit_arr(char **arr)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (arr[i])
@@ -50,16 +50,20 @@ static t_coord	*new_coord(char *s)
 	t_coord	*coord;
 	char	**parts;
 
-	if (!(coord = (t_coord *)ft_memalloc(sizeof(t_coord))))
+	coord = (t_coord *)ft_memalloc(sizeof(t_coord));
+	if (coord == NULL)
 		terminate(ERR_MAP_READING);
-	if (!(parts = ft_strsplit(s, ',')))
+	parts = ft_strsplit(s, ',');
+	if (parts == NULL)
 		terminate(ERR_MAP_READING);
 	if (!ft_isnumber(parts[0], 10))
 		terminate(ERR_MAP_READING);
 	if (parts[1] && !ft_isnumber(parts[1], 16))
 		terminate(ERR_MAP_READING);
 	coord->z = ft_atoi(parts[0]);
-	coord->color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
+	coord->color = -1;
+	if (parts[1])
+		coord->color = ft_atoi_base(parts[1], 16);
 	coord->next = NULL;
 	free_strsplit_arr(parts);
 	return (coord);
@@ -111,14 +115,17 @@ int	map_populate(const int fd, t_coord **coords_stack, t_map *map)
 	int		gnl_ret;
 	char	**coords_line;
 
-	while ((gnl_ret = get_next_line(fd, &line)) == 1)
+	gnl_ret = get_next_line(fd, &line);
+	while (gnl_ret == 1)
 	{
-		if (!(coords_line = ft_strsplit(line, ' ')))
+		coords_line = ft_strsplit(line, ' ');
+		if (coords_line == NULL)
 			terminate(ERR_MAP_READING);
 		parse_line(coords_line, coords_stack, map);
 		free_strsplit_arr(coords_line);
 		ft_strdel(&line);
 		map->height++;
+		gnl_ret = get_next_line(fd, &line);
 	}
 	if (!(*coords_stack))
 		terminate(ERR_MAP);

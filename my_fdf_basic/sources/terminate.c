@@ -6,19 +6,17 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:36:23 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/20 13:12:04 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/20 15:16:49 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-** "fdf.h" for t_point type and t_map type
 ** "libft.h" for t_putendl_fd()
 ** <stdlib.h> for exit()
 ** <stdio.h> for perror()
 ** <errno.h> for errno value
 */
 
-#include "fdf.h"
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
