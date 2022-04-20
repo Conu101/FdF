@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:48:00 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/12 17:34:08 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/20 13:07:35 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct			s_map
 	int					z_min;
 	int					z_max;
 	int					z_range;
+	int					zoom;
 }						t_map;
 
 typedef struct			s_fdf
@@ -75,8 +76,6 @@ t_point	new_point(int x, int y, t_map *map);
 int		get_color(t_point current, t_point start, t_point end, t_point delta);
 int		ft_atoi_base(const char *str, int base);
 t_bool	ft_isnumber(char *str, int base);
-int		get_default_color(int z, t_map *map);
-
-
+int		get_relative_color(int z, t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:04:41 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/12 17:32:04 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/20 12:36:17 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@
 
 #include "fdf.h"
 #include "color.h"
+
+/*
+** Get percent
+*/
+
+double	percent(int start, int end, int current)
+{
+	double	placement;
+	double	distance;
+
+	placement = current - start;
+	distance = end - start;
+	return ((distance == 0) ? 1.0 : (placement / distance));
+}
+
 
 /*
 ** Get light for color. Result depends on point position.
@@ -63,7 +78,7 @@ int	get_color(t_point current, t_point start, t_point end, t_point delta)
 ** Get color from default palette. Color depends on altitude
 */
 
-int	get_default_color(int z, t_map *map)
+int	get_relative_color(int z, t_map *map)
 {
 	double	percentage;
 

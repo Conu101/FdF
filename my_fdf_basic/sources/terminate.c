@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:36:23 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/12 17:33:59 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/20 13:12:04 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,3 @@ void	terminate(char *s)
 		perror(s);
 	exit(1);
 }
-
-/*
-** Close program when called (for ex. key press).
-int	close_prgm(int keycode, t_fdf *fdf)
-{
-	mlx_destroy_window(fdf->mlx, fdf->win);
-	return (0);
-}
-*/

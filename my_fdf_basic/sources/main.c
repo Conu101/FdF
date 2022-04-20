@@ -6,9 +6,14 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:57:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/12 17:16:58 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/18 17:05:18 by ctrouve 
+         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** stdlib for exit
+*/
 
 #include "fdf.h"
 #include "mlx.h"
@@ -17,6 +22,21 @@
 #include <sys/errno.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
+
+/*
+** esc key press event
+*/
+
+static int	key_hook(int keycode, t_fdf *fdf)
+{
+	if(keycode == 53 || keycode == 12)
+	{
+		mlx_destroy_window(fdf->mlx, fdf->win);
+		exit(1);
+	}
+	return (0);
+}
 
 int		main(int argc, char **argv)
 {
@@ -36,7 +56,7 @@ int		main(int argc, char **argv)
 			fdf = fdf_init(map);
 			stack_to_arrays(&coords_stack, map);
 			draw_img(fdf->map, fdf);
-			mlx_hook(fdf->win, 2, 1L<<0, close, &fdf);
+			mlx_key_hook(fdf->win, key_hook, &fdf);
 			mlx_loop(fdf->mlx);
 		}
 	else

@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:14:19 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/12 17:08:23 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/12 17:53:57 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_fdf	*fdf_init(t_map *map)
 		terminate(ERR_FDF_INIT);
 	if (!(fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT)))
 		terminate(ERR_FDF_INIT);
-	fdf->data_addr = mlx_get_data_addr(fdf->img, &(fdf->bits_per_pixel),
+	fdf->data_addr = mlx_get_data_addr(fdf->img, &(fdf->bits_per_pixel),\
 										&(fdf->size_line), &(fdf->endian));
 	fdf->map = map;
 	return (fdf);

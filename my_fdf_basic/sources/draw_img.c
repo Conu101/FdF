@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/12 17:02:02 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/19 15:10:42 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ void	draw_img(t_map *map, t_fdf *fdf)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
-	//print_menu(fdf);
+	mlx_put_image_to_window(fdf->mlx, fdf->win,\
+	fdf->img, 0, 0);
 }
-

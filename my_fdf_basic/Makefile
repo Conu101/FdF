@@ -6,7 +6,7 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 16:55:49 by ctrouve           #+#    #+#              #
-#    Updated: 2022/04/12 17:36:30 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/04/20 13:29:42 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 
 HEADERS_LIST = fdf.h\
 	color.h\
-	keypad.h\
 	errors.h
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
