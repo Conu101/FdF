@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:57:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/20 15:49:44 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/21 16:00:07 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	key_hook(int keycode, t_fdf *fdf)
 {
 	if (keycode == 53 || keycode == 12)
 	{
-		mlx_destroy_image(fdf->mlx, fdf->win);
 		mlx_destroy_window(fdf->mlx, fdf->win);
 		exit(0);
 	}
@@ -59,8 +58,8 @@ int	main(int argc, char **argv)
 		map = map_init();
 		if (map_populate(fd, &coords_stack, map) == -1)
 			terminate(ERR_MAP_READING);
-		fdf = fdf_init(map); //norm checked until here
-		stack_to_arrays(&coords_stack, map);
+		fdf = fdf_init(map); 
+		stack_to_arrays(&coords_stack, map);//norm checked until here
 		draw_img(fdf->map, fdf);
 		mlx_key_hook(fdf->win, key_hook, &fdf);
 		mlx_loop(fdf->mlx);

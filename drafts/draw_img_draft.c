@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/22 00:32:50 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/21 21:57:25 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,25 @@
 #include "libft.h"
 #include "mlx.h"
 #include "color.h"
-//#include <math.h> forbidden
 
 /*
-** Get the color of the pixewl on the line depending on its altitude
+** Put pixel into map image
 
 
-static int	get_delta_color(t_fdf *fdf, t_point delta)
+static void	my_pixel_put(t_fdf *fdf, int x, int y, int color)
 {
-	int	min;
-	int	max;
+	int		i;
 
-	min = fdf->map->z_min;
-	max = fdf->map->z_max;
-	if (delta.z <= (min + ((2/10) * (max - min))))
-		delta.color = COLOR_SAFFRON;
-	if (delta.z > (min + (2/10) * (max - min)) && delta.z <= (min + (4/10) * (max - min)))
-		delta.color = COLOR_JAFFA;
-	if (delta.z > (min + (4/10) * (max - min)) && delta.z <= (min + (6/10) * (max - min)))
-		delta.color = COLOR_FLAMINGO;
-	if (delta.z > (min + (6/10) * (max - min)) && delta.z <= (min + (8/10) * (max - min)))
-		delta.color = COLOR_BRICK_RED;
-	else
-		delta.color = 0xEAEAEA;
-	return (delta.color);
-}*/
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		i = (x * fdf->bits_per_pixel / 8) + (y * fdf->size_line);
+		fdf->data_addr[i] = color;
+		fdf->data_addr[++i] = color >> 8;
+		fdf->data_addr[++i] = color >> 16;
+	}
+}
 
 
-/*
 ** Draw line
 */
 
@@ -57,26 +48,16 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 {
 	int		i;
 	int		j;
-	int		length;
-	t_point	delta;
-	int		delta_length;
+	//t_point	delta;
 
-	//length = sqrt((s.y - f.y) * (s.y - f.y) + (s.x - f.x) * (s.x - f.x));
-	length = (s.x - f.x) + (s.y - f.y);
-	j = f.y;
-	while (j <= s.y)
+	//delta.x = FT_ABS(s.x - f.x);
+	//delta.y = FT_ABS(s.y - f.y);
+	i = f.x;
+	while (i < s.x)
 	{
-		i = f.x;
-		while (i <= s.x)
-		{
-			delta.x = i;
-			delta.y = j;
-			delta_length = (delta.x - f.x) + (delta.y - f.y);
-			delta.z = f.z + (delta_length / length) * (s.z - f.z);
-			mlx_pixel_put(fdf->mlx, fdf->win, i, j, get_relative_color(delta.z, fdf->map));//0xFF32C3 
-			i++;
-		}
-		j++;
+		j = i * (s.y - f.y) / (s.x - f.x) + ((f.y * s.x) - (f.x * s.y)) / (s.x - f.x);
+		mlx_pixel_put(fdf->mlx, fdf->win, i, j, 0xFF32C3);
+		i++;
 	}
 }
 
@@ -147,6 +128,7 @@ void	draw_img(t_map *map, t_fdf *fdf)
 	int		x;
 	int		y;
 
+	//draw_background(fdf);
 	y = 0;
 	while (y < map->height)
 	{
@@ -163,4 +145,6 @@ void	draw_img(t_map *map, t_fdf *fdf)
 		}
 		y++;
 	}
+	//mlx_put_image_to_window(fdf->mlx, fdf->win, \
+	//fdf->img, 0, 0);
 }

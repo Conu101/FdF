@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:48:00 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/20 13:59:54 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/21 21:23:07 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct			s_fdf
 	void				*mlx;
 	void				*win;
 	t_map				*map;
-	char				*data_addr;
-	void				*img;
+	//char				*data_addr;
+	//void				*img;
 	int					bits_per_pixel;
 	int					size_line;
 	int					endian;
@@ -55,6 +55,7 @@ typedef struct			s_point
 	int					z;
 	int					color;
 }						t_point;
+
 
 typedef enum
 {
