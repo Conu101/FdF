@@ -6,14 +6,14 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:10:30 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/21 15:53:04 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/03 17:17:35 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** "fdf.h" for t_coord type, t_map type, terminate() and get_top()
-** "libft.h" for ssize_t type ("libft.h" includes <string.h>),
-** size_t ("libft.h" includes <string.h>) and ft_memalloc()
+** "libft.h" for size_t and ssize_t types ("libft.h" includes <string.h>),
+** and ft_memalloc().
 ** "errors.h" for ERR_CONV_TO_ARR macro
 ** <stdlib.h> for free()
 */
@@ -73,11 +73,7 @@ void	stack_to_arrays(t_coord **coords_stack, t_map *map)
 	map->colors_arr = (int *)ft_memalloc(arr_size);
 	if (map->colors_arr == NULL)
 		terminate(ERR_CONV_TO_ARR);
-	coord = (t_coord *)ft_memalloc(sizeof(t_coord));
-	if (coord == NULL)
-		terminate(ERR_MAP_READING);
-	else
-		coord = get_top(coords_stack);
+	coord = get_top(coords_stack);
 	i = map->width * map->height - 1;
 	while ((coord) && i >= 0)
 	{

@@ -6,7 +6,7 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:16:27 by ctrouve           #+#    #+#              #
-#    Updated: 2022/04/06 14:49:37 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/05/03 14:50:39 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ HEADERS_LIST = libft.h\
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 SOURCES_DIRECTORY = ./sources/
-SOURCES_LIST = ft_atoi.c \
+SOURCES_LIST = ft_abs.c \
+		ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_count_splits_str.c \

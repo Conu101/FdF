@@ -6,13 +6,13 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:45:11 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/06 14:49:56 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/03 14:41:54 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_MESSAGE_H
+#ifndef ERRORS_H
 
-# define ERROR_MESSAGE_H
+# define ERRORS_H
 
 # define ERR_USAGE			"Usage: ./fdf MAP_FILE"
 # define ERR_MAP			"Incorrect map file"

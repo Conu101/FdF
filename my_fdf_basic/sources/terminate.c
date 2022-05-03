@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:36:23 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/20 15:16:49 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/03 17:18:42 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 #include <errno.h>
 
 /*
-** Terminate execution and display error message
+** Terminate execution and display error message either from pre-defined error 
+** types (macros) or if errno != 0, perror message.
 */
 
 void	terminate(char *s)

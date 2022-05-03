@@ -6,18 +6,18 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:19:41 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/03/18 14:20:22 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/03 14:53:39 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isspace(int c)
+int	ft_isspace(int c)
 {
-	return (c == '\t' ||
-			c == '\n' ||
-			c == '\v' ||
-			c == '\f' ||
-			c == '\r' ||
+	return (c == '\t' || \
+			c == '\n' || \
+			c == '\v' || \
+			c == '\f' || \
+			c == '\r' || \
 			c == ' ');
 }

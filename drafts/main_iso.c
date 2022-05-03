@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:57:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/03 20:55:06 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/03 19:23:23 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@
 
 static int	key_hook(int keycode, t_fdf *fdf)
 {
+	if (keycode == 34)
+	{
+		draw_img_iso(fdf->map, fdf);
+	}
 	if (keycode == 53)
 	{
 		mlx_destroy_window(fdf->mlx, fdf->win);

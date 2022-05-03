@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:22:45 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/12 17:22:59 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/02 19:31:37 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 
 static int	ft_isdigit_base(char c, int base)
 {
-	const char	*digits = "0123456789ABCDEF";
+	const char	*digits;
 	int			i;
 
+	digits = "0123456789ABCDEF";
 	i = 0;
 	while (i < base)
 	{
@@ -87,7 +88,10 @@ t_bool	ft_isnumber(char *str, int base)
 		i++;
 		digits++;
 	}
-	return ((!str[i] && digits) ? true : false);
+	if (!str[i] && digits)
+		return (true);
+	else
+		return (false);
 }
 
 /*
@@ -112,7 +116,12 @@ int	ft_atoi_base(const char *str, int base)
 	else if (base == 8)
 		i++;
 	else if (base == 10 && (str[i] == '-' || str[i] == '+'))
-		sign = (str[i++] == '-') ? -1 : 1;
+	{
+		if (str[i++] == '-')
+			sign = -1;
+		else
+			sign = 1;
+	}
 	while (ft_isdigit_base(str[i], base) >= 0)
 		result = result * base + ft_isdigit_base(str[i++], base);
 	return ((int)(result * sign));

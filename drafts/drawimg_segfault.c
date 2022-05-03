@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/21 21:57:25 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/22 11:56:40 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@
 
 /*
 ** Put pixel into map image
-
+** As each RGB pixel has three sets of 8-bit binary numbers it therefore has 
+** 24 bits of computer information in total. Hence the term '24-bit colour'. 
+** And as 8 bits equals 1 byte, each RGB pixel therefore equals 3 bytes in 
+** file size.
+** color, color >> 8, color >> 16 = bitwise notation to set the R, G, and B
+** values of each pixel.
+*/
 
 static void	my_pixel_put(t_fdf *fdf, int x, int y, int color)
 {
@@ -40,35 +46,16 @@ static void	my_pixel_put(t_fdf *fdf, int x, int y, int color)
 	}
 }
 
-
-** Draw line
+/*
+** 
 */
 
-static void	draw_line(t_point f, t_point s, t_fdf *fdf)
-{
-	int		i;
-	int		j;
-	//t_point	delta;
-
-	//delta.x = FT_ABS(s.x - f.x);
-	//delta.y = FT_ABS(s.y - f.y);
-	i = f.x;
-	while (i < s.x)
-	{
-		j = i * (s.y - f.y) / (s.x - f.x) + ((f.y * s.x) - (f.x * s.y)) / (s.x - f.x);
-		mlx_pixel_put(fdf->mlx, fdf->win, i, j, 0xFF32C3);
-		i++;
-	}
-}
-
-/*
 static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 {
 	t_point	delta;
 	t_point	sign;
 	t_point	cur;
 	int		error[2];
-
 	delta.x = FT_ABS(s.x - f.x);
 	delta.y = FT_ABS(s.y - f.y);
 	if (f.x < s.x)
@@ -98,11 +85,10 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 		}
 	}
 }
-*/
 
 /*
 ** Draw background color 
-
+*/
 
 static void	draw_background(t_fdf *fdf)
 {
@@ -119,7 +105,7 @@ static void	draw_background(t_fdf *fdf)
 	}
 }
 
-
+/*
 ** Draw image
 */
 
@@ -128,7 +114,7 @@ void	draw_img(t_map *map, t_fdf *fdf)
 	int		x;
 	int		y;
 
-	//draw_background(fdf);
+	draw_background(fdf);
 	y = 0;
 	while (y < map->height)
 	{
@@ -145,6 +131,6 @@ void	draw_img(t_map *map, t_fdf *fdf)
 		}
 		y++;
 	}
-	//mlx_put_image_to_window(fdf->mlx, fdf->win, \
-	//fdf->img, 0, 0);
+	mlx_put_image_to_window(fdf->mlx, fdf->win, \
+	fdf->img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 22:52:25 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/20 15:14:51 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:13:13 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,6 @@ int	map_populate(const int fd, t_coord **coords_stack, t_map *map)
 	}
 	if (!(*coords_stack))
 		terminate(ERR_MAP);
+	free(line);
 	return (gnl_ret);
 }
