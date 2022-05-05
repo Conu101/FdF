@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:45:11 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/03 14:41:54 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/05 14:40:34 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 # define ERR_MAP_INIT		"Map initialization error"
 # define ERR_FDF_INIT		"FdF initialization error"
 # define ERR_CONV_TO_ARR	"Conversion to array error"
+# define ERR_CONV_COLOR		"Conversion RGB to hex color error"
+
 
 #endif

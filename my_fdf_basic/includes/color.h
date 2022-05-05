@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:43:32 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/03 20:54:26 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/05 21:34:04 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 # define COLOR_H
 
-# define COLOR_VIOLET		0x9A1F6A
-# define COLOR_RED			0xC2294E
-# define COLOR_PINK			0xEC4B27
-# define COLOR_ORANGE		0xEF8633
-# define COLOR_YELLOW		0xF3AF3D
+# define COLOR_VIOLET		0x932F6D
+# define COLOR_RED			0xE00F00
+# define COLOR_PINK			0xF66E3C
+# define COLOR_ORANGE		0xFFB20F
+# define COLOR_YELLOW		0xFFE347
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:48:00 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/05 22:12:45 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/05 21:36:48 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	draw_img(t_map *map, t_fdf *fdf);
 double	percent(int start, int end, int current);
 int		get_index(int x, int y, int width);
 t_point	new_point(int x, int y, t_map *map);
-t_point	new_point_iso(int x, int y, t_map *map);
 int		ft_atoi_base(const char *str, int base);
 t_bool	ft_isnumber(char *str, int base);
 int		get_color(int z, t_map *map);

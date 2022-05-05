@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/03 17:11:55 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/05 21:36:17 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,38 @@
 #include "fdf.h"
 #include "libft.h"
 #include "mlx.h"
+# include <math.h>
 
 /*
-** Draw a line between points f = first and s = second
-** All points in between will successively be delta
+** Draw a line between points begin and end
+** Delta values represent the distances between begin and end on x, y and z
+** int pixels is the length of the line in pixels
+** All points will successively be t_point pixel
 */
 
-static void	draw_line(t_point f, t_point s, t_fdf *fdf)
+static void draw_line(void *mlx, void *win, t_point begin, t_point end, t_map *map)
 {
-	int		i;
-	int		j;
-	int		length;
 	t_point	delta;
-	int		delta_length;
+	int		pixels;
+	t_point	pixel;
 
-	length = (s.x - f.x) + (s.y - f.y);
-	j = f.y;
-	while (j <= s.y)
+	delta.x = end.x - begin.x;
+	delta.y = end.y - begin.y;
+	delta.z = end.z - begin.z;
+	pixels = sqrt((delta.x * delta.x) + (delta.y * delta.y));
+	delta.x /= pixels;
+	delta.y /= pixels;
+	delta.z /= pixels;
+	pixel.x = begin.x;
+	pixel.y = begin.y;
+	pixel.z = begin.z;
+	while (pixels)
 	{
-		i = f.x;
-		while (i <= s.x)
-		{
-			delta.x = i;
-			delta.y = j;
-			delta_length = (delta.x - f.x) + (delta.y - f.y);
-			delta.z = f.z + (delta_length / length) * (s.z - f.z);
-			mlx_pixel_put(fdf->mlx, fdf->win, i, j, get_color(delta.z, \
-			fdf->map));
-			i++;
-		}
-		j++;
+		mlx_pixel_put(mlx, win, pixel.x, pixel.y, get_color(pixel.z, map));
+		pixel.x += delta.x;
+		pixel.y += delta.y;
+		pixel.z += delta.z;
+		pixels--;
 	}
 }
 
@@ -59,21 +61,29 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 
 void	draw_img(t_map *map, t_fdf *fdf)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	t_point	begin;
+	t_point	end;
 
 	y = 0;
-	while (y < map->height)
+	while (y <= map->height - 1)
 	{
 		x = 0;
-		while (x < map->width)
+		while (x <= map->width - 1)
 		{
-			if (x != fdf->map->width - 1)
-				draw_line(new_point(x, y, map), \
-				new_point(x + 1, y, map), fdf);
-			if (y != fdf->map->height - 1)
-				draw_line(new_point(x, y, map), \
-				new_point(x, y + 1, map), fdf);
+			if (x < map->width - 1)
+			{
+				begin = new_point(x, y, map);
+				end = new_point(x + 1, y, map);
+				draw_line(fdf->mlx, fdf->win, begin, end, map);
+			}
+			if (y < map->height - 1)
+			{
+				begin = new_point(x, y, map);
+				end = new_point(x, y + 1, map);
+				draw_line(fdf->mlx, fdf->win, begin, end, map);
+			}
 			x++;
 		}
 		y++;
