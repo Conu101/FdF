@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:57:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/03 20:55:06 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/06 13:08:18 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 /*
 ** esc key press event
+** leaks can be tested with a line "system("leaks fdf");" before exit(1).
 */
 
 static int	key_hook(int keycode, t_fdf *fdf)
@@ -37,7 +38,6 @@ static int	key_hook(int keycode, t_fdf *fdf)
 	if (keycode == 53)
 	{
 		mlx_destroy_window(fdf->mlx, fdf->win);
-		system("leaks fdf");
 		exit(1);
 	}
 	return (0);

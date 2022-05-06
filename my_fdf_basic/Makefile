@@ -6,7 +6,7 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 16:55:49 by ctrouve           #+#    #+#              #
-#    Updated: 2022/04/27 13:50:03 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/05/06 13:19:05 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 # COLORS
 
 GREEN = \033[0;32m
-RED = \033[0;31m
+ORANGE = \033[0;33m
 RESET = \033[0m
 
 .PHONY: all clean fclean re
@@ -84,16 +84,16 @@ clean:
 	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
 	@$(MAKE) -sC $(MINILIBX_DIRECTORY) clean
 	@rm -rf $(OBJECTS_DIRECTORY)
-	@echo "$(NAME): $(RED)$(OBJECTS_DIRECTORY) was deleted$(RESET)"
-	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
+	@echo "$(NAME): $(ORANGE)$(OBJECTS_DIRECTORY) was deleted$(RESET)"
+	@echo "$(NAME): $(ORANGE)object files were deleted$(RESET)"
 
 fclean: clean
 	@rm -f $(MINILIBX)
-	@echo "$(NAME): $(RED)$(MINILIBX) was deleted$(RESET)"
+	@echo "$(NAME): $(ORANGE)$(MINILIBX) was deleted$(RESET)"
 	@rm -f $(LIBFT)
-	@echo "$(NAME): $(RED)$(LIBFT) was deleted$(RESET)"
+	@echo "$(NAME): $(ORANGE)$(LIBFT) was deleted$(RESET)"
 	@rm -f $(NAME)
-	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
+	@echo "$(NAME): $(ORANGE)$(NAME) was deleted$(RESET)"
 
 re:
 	@$(MAKE) fclean
