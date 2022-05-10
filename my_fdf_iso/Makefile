@@ -6,11 +6,11 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 16:55:49 by ctrouve           #+#    #+#              #
-#    Updated: 2022/05/06 13:29:35 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/05/06 18:01:03 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
+NAME = fdf_iso
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
@@ -29,10 +29,10 @@ MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 HEADERS_LIST = fdf.h\
 	color.h\
 	errors.h
-HEADERS_DIRECTORY = ./includes/
+HEADERS_DIRECTORY = ./includes_iso/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-SOURCES_DIRECTORY = ./sources/
+SOURCES_DIRECTORY = ./sources_iso/
 SOURCES_LIST = draw_img.c\
 	fdf_init.c\
 	get_color.c\

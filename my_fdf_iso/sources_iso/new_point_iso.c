@@ -36,18 +36,18 @@ int	get_index(int x, int y, int width)
 ** Get zoom in function of the map size and image size, center the map in the 
 ** image.
 ** Give color to point in function of z altitude.
-*/
 
-static void	iso(t_point p)
+static void	get_iso(t_point point)
 {
 	int previous_x;
 	int previous_y;
 
-	previous_x = p.x;
-	previous_y = p.y;
-	p.x = (previous_x - previous_y) * cos(0.523599) + 1;
-	p.y = -(p.z) + (previous_x + previous_y) * sin(0.523599) + 2;
-}
+	previous_x = point.x;
+	previous_y = point.y;
+	point.x = (previous_x - previous_y) * cos(0.523599);
+	point.y = -(point.z) + (previous_x + previous_y) * sin(0.523599);
+}*/
+
 
 t_point	new_point_iso(int x, int y, t_map *map)
 {
@@ -56,11 +56,12 @@ t_point	new_point_iso(int x, int y, t_map *map)
 
 	index = get_index(x, y, map->width);
 	map->zoom = ft_imin(WIDTH / map->width, HEIGHT / map->height);
-	point.x = (x + 1) * map->zoom * 0.9 + (WIDTH - map->zoom * map->width) / 2;
-	point.y = (y + 1) * map->zoom * 0.9 + (HEIGHT - map->zoom * map->height) \
-	/ 2;
 	point.z = map->coords_arr[index];
-	iso(point);
+	point.x = x * cos(30) - y * sin(30);
+	point.y = -(point.z / 10) + x * cos(30) + y * sin(30);
+	point.x = (point.x + 1) * map->zoom * 0.1 + (WIDTH - map->zoom * map->width) / 2;
+	point.y = (point.y + 1) * map->zoom * 0.1 + (HEIGHT - map->zoom * map->height) \
+	/ 2;
 	if (map->colors_arr[index] == -1)
 		point.color = get_color(point.z, map);
 	else
