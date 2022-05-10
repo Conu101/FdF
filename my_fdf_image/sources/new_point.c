@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:40:02 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/10 13:05:31 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/10 17:27:09 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ t_point	change_proj(t_point point, t_fdf *fdf, t_map *map)
 	if (fdf->projection == 1)
 		iso(&point.x, &point.y, point.z);
 	map->zoom = ft_imin(WIDTH / map->width, HEIGHT / map->height);
-	point.x = (point.x + 1) * map->zoom * 0.9 + (WIDTH - map->zoom * map->width) / 2;
-	point.y = (point.y + 1) * map->zoom * 0.9 + (HEIGHT - map->zoom * map->height) \
-	/ 2;
+	point.x = (point.x + 1) * map->zoom * 0.5 + WIDTH / 2;
+	point.y = (point.y + 1) * map->zoom * 0.5 + HEIGHT / 3;
 	return (point);
 }
