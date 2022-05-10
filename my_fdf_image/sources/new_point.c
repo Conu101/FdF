@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:40:02 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/10 17:27:09 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/10 18:05:07 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static void	iso(int *x, int *y, int z)
 ** depending on the value of param int projection, change the projection
 ** if projection = 0, view parallel
 ** if projection = 1, view ISO
-*/
 
 t_point	change_proj(t_point point, t_fdf *fdf, t_map *map)
 {
@@ -83,4 +82,24 @@ t_point	change_proj(t_point point, t_fdf *fdf, t_map *map)
 	point.x = (point.x + 1) * map->zoom * 0.5 + WIDTH / 2;
 	point.y = (point.y + 1) * map->zoom * 0.5 + HEIGHT / 3;
 	return (point);
+}
+*/
+
+/*
+** Project coordinate to 2D plane
+*/
+
+t_point		project(t_point p, t_fdf *fdf)
+{
+	p.x *= fdf->camera->zoom;
+	p.y *= fdf->camera->zoom;
+	p.z *= fdf->camera->zoom / fdf->camera->z_divisor;
+	p.x -= (fdf->map->width * fdf->camera->zoom) / 2;
+	p.y -= (fdf->map->height * fdf->camera->zoom) / 2;
+	if (fdf->camera->projection == 1)
+		iso(&p.x, &p.y, p.z);
+	p.x += (WIDTH) / 2 + fdf->camera->x_offset;
+	p.y += (HEIGHT + fdf->map->height * fdf->camera->zoom) / 2 \
+	+ fdf->camera->y_offset;
+	return (p);
 }

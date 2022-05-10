@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/10 16:41:15 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/10 18:04:15 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,29 +130,23 @@ void	draw_img(t_map *map, t_fdf *fdf)
 {
 	int		x;
 	int		y;
-	t_point	begin;
-	t_point	end;
 
 	draw_background(fdf);
 	y = 0;
-	while (++y <= map->height - 1)
+	while (y < map->height)
 	{
 		x = 0;
-		while (++x <= map->width - 1)
+		while (x < map->width)
 		{
-			if (x < map->width - 1)
-			{
-				begin = change_proj(new_point(x, y, map), fdf, map);
-				end = change_proj(new_point(x + 1, y, map), fdf, map);
-				draw_line(fdf, begin, end, map);
-			}
-			if (y < map->height - 1)
-			{
-				begin = change_proj(new_point(x, y, map), fdf, map);
-				end = change_proj(new_point(x, y + 1, map), fdf, map);
-				draw_line(fdf, begin, end, map);
-			}
+			if (x != fdf->map->width - 1)
+				draw_line(fdf, project(new_point(x, y, map), fdf),
+					project(new_point(x + 1, y, map), fdf), map);
+			if (y != fdf->map->height - 1)
+				draw_line(fdf, project(new_point(x, y, map), fdf),
+					project(new_point(x, y + 1, map), fdf), map);
+			x++;
 		}
+		y++;
 	}
-	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, map->width / 2, map->height / 2);
+	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 }

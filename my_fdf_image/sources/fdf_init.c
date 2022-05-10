@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:14:19 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/10 17:23:27 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/10 18:06:18 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ t_fdf	*fdf_init(t_map *map)
 	fdf->data_addr = mlx_get_data_addr(fdf->img, &(fdf->bits_per_pixel),
 	&(fdf->size_line), &(fdf->endian));
 	fdf->map = map;
-	fdf->projection = 1;
+	//fdf->projection = 1;
 	return (fdf);
 }
