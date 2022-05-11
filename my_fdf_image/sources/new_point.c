@@ -6,13 +6,13 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:40:02 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/10 18:05:07 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/11 20:58:48 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** "fdf.h" for t_point type and t_map type
-** "libft.h" for t_putendl_fd()
+** "libft.h" for t_putendl_fd(), ft_abs(), ft_imin()
 ** <stdlib.h> for exit()
 ** <math.h> for cos and sin
 */
@@ -70,36 +70,37 @@ static void	iso(int *x, int *y, int z)
 }
 
 /*
+** Calculate z_divisor. z_div = z_range if both z_min and z_max 
+** are sane sign, otherwise z_div = smallest abs value.
+*/
+static int	z_div(t_map *map)
+{
+	int	z_div;
+
+	if (map->z_min >= 0 || map->z_max <= 0)
+		z_div = 0.25 * map->z_range;
+	else
+		z_div = ft_imin(ft_abs(map->z_min), map->z_max);
+	return (z_div);
+}
+
+/*
 ** depending on the value of param int projection, change the projection
 ** if projection = 0, view parallel
 ** if projection = 1, view ISO
+*/
 
 t_point	change_proj(t_point point, t_fdf *fdf, t_map *map)
 {
+	map->z_divisor = z_div(map);
+	map->zoom = ft_imin(WIDTH / map->width, HEIGHT / map->height);
+	point.x = (point.x + 1) * map->zoom * 0.9; /*+ (WIDTH - map->zoom * map->width) / 2;*/
+	point.y = (point.y + 1) * map->zoom * 0.9; /*+ (HEIGHT - map->zoom * map->height) \
+	/ 2;*/
+	point.z = (point.z / map->z_divisor) * map->zoom * 0.9;
 	if (fdf->projection == 1)
 		iso(&point.x, &point.y, point.z);
-	map->zoom = ft_imin(WIDTH / map->width, HEIGHT / map->height);
-	point.x = (point.x + 1) * map->zoom * 0.5 + WIDTH / 2;
-	point.y = (point.y + 1) * map->zoom * 0.5 + HEIGHT / 3;
+	point.x = point.x + (WIDTH - map->zoom * map->width);
+	point.y = point.y - (HEIGHT - map->zoom * map->height) / 2;
 	return (point);
-}
-*/
-
-/*
-** Project coordinate to 2D plane
-*/
-
-t_point		project(t_point p, t_fdf *fdf)
-{
-	p.x *= fdf->camera->zoom;
-	p.y *= fdf->camera->zoom;
-	p.z *= fdf->camera->zoom / fdf->camera->z_divisor;
-	p.x -= (fdf->map->width * fdf->camera->zoom) / 2;
-	p.y -= (fdf->map->height * fdf->camera->zoom) / 2;
-	if (fdf->camera->projection == 1)
-		iso(&p.x, &p.y, p.z);
-	p.x += (WIDTH) / 2 + fdf->camera->x_offset;
-	p.y += (HEIGHT + fdf->map->height * fdf->camera->zoom) / 2 \
-	+ fdf->camera->y_offset;
-	return (p);
 }

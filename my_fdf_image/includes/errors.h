@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:45:11 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/10 17:58:27 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/06 13:02:30 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@
 # define ERR_FDF_INIT		"FdF initialization error"
 # define ERR_CONV_TO_ARR	"Conversion to array error"
 # define ERR_CONV_COLOR		"Conversion RGB to hex color error"
-# define ERR_CAMERA_INIT	"Camera initalization error"
 
 #endif

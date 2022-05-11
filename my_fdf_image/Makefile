@@ -6,7 +6,7 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 16:55:49 by ctrouve           #+#    #+#              #
-#    Updated: 2022/05/10 18:00:36 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/05/10 12:36:17 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,7 @@ HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./sources/
-SOURCES_LIST = camera_init.c\
-	draw_img.c\
+SOURCES_LIST = draw_img.c\
 	fdf_init.c\
 	get_color.c\
 	main.c\

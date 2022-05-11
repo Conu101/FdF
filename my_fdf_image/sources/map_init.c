@@ -6,13 +6,13 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:58:37 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/04/20 14:41:53 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/11 20:28:52 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** "fdf.h" for t_map type, terminate()
-** "libft.h" for ft_memalloc(), NULL macros ("libft.h" includes <string.h>)
+** "libft.h" for ft_memalloc(), NULL macros ("libft.h" includes <string.h>),
 ** "errors.h" for ERR_MAP_INIT macro
 */
 
@@ -37,6 +37,7 @@ t_map	*map_init(void)
 	map->z_min = 0;
 	map->z_max = 0;
 	map->z_range = 0;
+	map->z_divisor = 1;
 	map->zoom = 1;
 	return (map);
 }
