@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:04:41 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/11 21:30:34 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/13 15:03:14 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ double	percent(int start, int end, int current)
 }
 
 /*
-** Get color from default palette. Color depends on altitude
+** Get color from default palette for individual points of the grid.
+** Color depends on altitude
 */
 
 int	get_color(int z, t_map *map)
@@ -58,4 +59,26 @@ int	get_color(int z, t_map *map)
 		return (COLOR_ORANGE);
 	else
 		return (COLOR_YELLOW);
+}
+
+/*
+** Get color for points in lines between individual points.
+** Color depends on begin and end colors.
+*/
+
+int	get_line_color(t_point f, t_point s, t_point cur)
+{
+	double	percentage;
+
+	if (f.color == s.color)
+		cur.color = f.color;
+	else
+	{
+		percentage = percent(f.z, s.z, cur.z);
+		if (percentage <= 0.5)
+			cur.color = f.color;
+		else
+			cur.color = s.color;
+	}
+	return (cur.color);
 }

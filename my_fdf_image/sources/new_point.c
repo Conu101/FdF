@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:40:02 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/11 20:58:48 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/13 17:51:12 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,14 @@ t_point	change_proj(t_point point, t_fdf *fdf, t_map *map)
 {
 	map->z_divisor = z_div(map);
 	map->zoom = ft_imin(WIDTH / map->width, HEIGHT / map->height);
-	point.x = (point.x + 1) * map->zoom * 0.9; /*+ (WIDTH - map->zoom * map->width) / 2;*/
-	point.y = (point.y + 1) * map->zoom * 0.9; /*+ (HEIGHT - map->zoom * map->height) \
-	/ 2;*/
+	point.x = (point.x + 1) * map->zoom * 0.9;
+	point.y = (point.y + 1) * map->zoom * 0.9;
 	point.z = (point.z / map->z_divisor) * map->zoom * 0.9;
 	if (fdf->projection == 1)
+	{
 		iso(&point.x, &point.y, point.z);
-	point.x = point.x + (WIDTH - map->zoom * map->width);
-	point.y = point.y - (HEIGHT - map->zoom * map->height) / 2;
+		point.x = point.x + (WIDTH - map->zoom * map->width);
+		point.y = point.y - (HEIGHT - map->zoom * map->height) / 2;
+	}
 	return (point);
 }
