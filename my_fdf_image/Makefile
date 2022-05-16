@@ -6,7 +6,7 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 16:55:49 by ctrouve           #+#    #+#              #
-#    Updated: 2022/05/10 12:36:17 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/05/16 11:41:48 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SOURCES_LIST = draw_img.c\
 	new_point.c\
 	numbers.c\
 	build_coord_arrays.c\
+	set_proj_param.c\
 	terminate.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
