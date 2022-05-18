@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/16 16:24:46 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/18 12:56:33 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,6 @@ void	draw_img(t_map *map, t_fdf *fdf)
 
 	draw_background(fdf);
 	set_proj_param(map, fdf);
-	map->zoom = 0.8 * ft_imin((WIDTH * WIDTH) / ((map->x_max - map->x_min) * map->width), (WIDTH * WIDTH) / ((map->y_max - map->y_min) * map->height));
 	y = 0;
 	while (++y <= map->height - 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/11 21:31:17 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/16 16:24:46 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	draw_line(t_fdf *fdf, t_point begin, t_point end, t_map *map)
 	}
 }*/
 
-static void	draw_line(t_fdf *fdf, t_point f, t_point s, t_map *map)
+static void	draw_line(t_fdf *fdf, t_point f, t_point s)
 {
 	t_point	delta;
 	t_point	sign;
@@ -88,7 +88,7 @@ static void	draw_line(t_fdf *fdf, t_point f, t_point s, t_map *map)
 	cur = f;
 	while (cur.x != s.x || cur.y != s.y)
 	{
-		put_pixel(fdf, cur.x, cur.y, get_color(cur.z, map));
+		put_pixel(fdf, cur.x, cur.y, get_line_color(f, s, cur));
 		if ((error[1] = error[0] * 2) > -delta.y)
 		{
 			error[0] -= delta.y;
@@ -134,6 +134,8 @@ void	draw_img(t_map *map, t_fdf *fdf)
 	t_point	end;
 
 	draw_background(fdf);
+	set_proj_param(map, fdf);
+	map->zoom = 0.8 * ft_imin((WIDTH * WIDTH) / ((map->x_max - map->x_min) * map->width), (WIDTH * WIDTH) / ((map->y_max - map->y_min) * map->height));
 	y = 0;
 	while (++y <= map->height - 1)
 	{
@@ -144,13 +146,13 @@ void	draw_img(t_map *map, t_fdf *fdf)
 			{
 				begin = change_proj(new_point(x, y, map), fdf, map);
 				end = change_proj(new_point(x + 1, y, map), fdf, map);
-				draw_line(fdf, begin, end, map);
+				draw_line(fdf, begin, end);
 			}
 			if (y < map->height - 1)
 			{
 				begin = change_proj(new_point(x, y, map), fdf, map);
 				end = change_proj(new_point(x, y + 1, map), fdf, map);
-				draw_line(fdf, begin, end, map);
+				draw_line(fdf, begin, end);
 			}
 		}
 	}

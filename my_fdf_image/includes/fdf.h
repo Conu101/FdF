@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:48:00 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/16 14:17:20 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/18 11:02:01 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ typedef struct s_map
 	int					z_max;
 	int					z_range;
 	double				z_divisor;
-	int					zoom;
-	int					x_offset;
-	int					y_offset;
-	int					x_min;
-	int					x_max;
-	int					y_min;
-	int					y_max;
+	double					zoom;
+	double					x_offset;
+	double					y_offset;
+	double					x_min;
+	double					x_max;
+	double					y_min;
+	double					y_max;
 }						t_map;
 
 typedef struct s_fdf
