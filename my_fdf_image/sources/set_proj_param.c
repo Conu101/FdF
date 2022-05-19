@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:21:14 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/19 14:25:19 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/19 17:04:17 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@
 /*
 ** Calculate z_divisor. z_div = z_range if both z_min and z_max 
 ** are same sign, otherwise z_div = smallest abs value.
-static int	z_div(t_map *map)
-
-static int	z_div(t_map *map)
-{
-	int	z_div;
-
-	if (map->z_min >= 0 || map->z_max <= 0)
-		z_div = 0.25 * map->z_range;
-	else
-		z_div = 0.5 * ft_imin(ft_abs(map->z_min), map->z_max);
-	return (z_div);
-}
 */
 static double	z_div(t_map *map)
 {
@@ -71,10 +59,10 @@ void	set_proj_param(t_map *map, t_fdf *fdf)
 	map->y_min = 0.1;
 	map->y_max = map->height - 0.1;
 	y = 0;
-	while (++y <= map->height - 1)
+	while (y <= map->height - 1)
 	{
 		x = 0;
-		while (++x <= map->width - 1)
+		while (x <= map->width - 1)
 		{
 			if (x < map->width & y < map->height)
 			{
@@ -88,8 +76,10 @@ void	set_proj_param(t_map *map, t_fdf *fdf)
 				if (point.y >= map->y_max)
 					map->y_max = point.y;
 			}
+			x++;
 		}
+		y++;
 	}
-	map->x_offset = -map->x_min + 0.05 * WIDTH;
-	map->y_offset = -map->y_min + 0.05 * HEIGHT;
+	map->x_offset = -map->x_min + (WIDTH - (map->x_max - map->x_min)) / 2;
+	map->y_offset = -map->y_min + (HEIGHT - (map->y_max - map->y_min)) / 2;
 }

@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:04:41 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/19 14:34:51 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:47:53 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	get_color(int z, t_map *map)
 
 /*
 ** Get color for points in lines between individual points.
-** Color depends on begin and end colors.
+** Color depends on begin and end colors, and will be same as the highest end.
 */
 
 int	get_line_color(t_point f, t_point s, t_point cur)

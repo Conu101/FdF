@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/19 13:12:49 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:20:38 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,10 @@ void	draw_img(t_map *map, t_fdf *fdf)
 	draw_background(fdf);
 	set_proj_param(map, fdf);
 	y = 0;
-	while (++y <= map->height - 1)
+	while (y <= map->height - 1)
 	{
 		x = 0;
-		while (++x <= map->width - 1)
+		while (x <= map->width - 1)
 		{
 			if (x < map->width - 1)
 			{
@@ -120,7 +120,9 @@ void	draw_img(t_map *map, t_fdf *fdf)
 				end = change_proj(new_point(x, y + 1, map), fdf, map);
 				draw_line(fdf, begin, end);
 			}
+			x++;
 		}
+		y++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
 }

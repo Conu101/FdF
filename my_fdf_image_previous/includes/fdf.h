@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:48:00 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/18 12:33:06 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/19 17:01:17 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ int		get_color(int z, t_map *map);
 int		get_line_color(t_point f, t_point s, t_point cur);
 t_point	change_proj(t_point p, t_fdf *fdf, t_map *map);
 void	set_proj_param(t_map *map, t_fdf *fdf);
+void	switch_projection(int keycode, t_fdf *fdf);
 
 #endif

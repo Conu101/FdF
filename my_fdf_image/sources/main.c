@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:57:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/11 20:00:07 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/19 17:30:36 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,36 @@
 #include <stdlib.h>
 #include <errno.h>
 
-/*
-** esc key press event
-** leaks can be tested with a line "system("leaks fdf");" before exit(1).
-*/
 
-static int	key_hook(int keycode, t_fdf *fdf)
+/*
+** Change projection type: I (key 34) = iso; P (key 35) = parallel.
+*/
+static void	switch_projection(int keycode, t_fdf *fdf)
 {
-	if (keycode == 53)
-	{
-		mlx_destroy_window(fdf->mlx, fdf->win);
+	if (keycode == 34)
+		fdf->projection = 1;
+	else if (keycode == 35)
+		fdf->projection = 0;
+	system("leaks fdf");
+	draw_img(fdf->map, fdf);
+}
+
+/*
+** React to key press
+** Leaks can be tested with a line "system("leaks fdf");" before exit(1).
+*/
+static int		key_press(int key, void *param)
+{
+	t_fdf	*fdf;
+
+	fdf = (t_fdf *)param;
+	if (key == 53)
+	{	
 		system("leaks fdf");
-		exit(1);
+		exit(0);
 	}
+	else if (key == 34 || key == 35)
+		switch_projection(key, fdf);
 	return (0);
 }
 
@@ -63,7 +80,7 @@ int	main(int argc, char **argv)
 		fdf = fdf_init(map);
 		build_coord_arrays(&coords_stack, map);
 		draw_img(fdf->map, fdf);
-		mlx_key_hook(fdf->win, key_hook, fdf->mlx);
+		mlx_hook(fdf->win, 2, 0, key_press, fdf);
 		mlx_loop(fdf->mlx);
 	}
 	else
