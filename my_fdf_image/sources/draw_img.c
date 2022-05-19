@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/18 12:56:33 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/19 13:12:49 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,39 +39,6 @@ static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 		fdf->data_addr[++i] = color >> 16;
 	}
 }
-
-/*
-** Draw a line between points begin and end
-** Delta values represent the distances between begin and end on x, y and z
-** int pixels is the length of the line in pixels
-** All points will successively be t_point pixel
-
-static void	draw_line(t_fdf *fdf, t_point begin, t_point end, t_map *map)
-{
-	t_point	delta;
-	int		pixels;
-	t_point	pixel;
-
-	delta.x = end.x - begin.x;
-	delta.y = end.y - begin.y;
-	delta.z = end.z - begin.z;
-	pixels = ft_sqrt((delta.x * delta.x) + (delta.y * delta.y));
-	delta.x /= pixels;
-	delta.y /= pixels;
-	delta.z /= pixels;
-	pixel.x = begin.x;
-	pixel.y = begin.y;
-	pixel.z = begin.z;
-	while (pixels)
-	{
-		put_pixel(fdf, pixel.x, pixel.y, \
-		get_color(pixel.z, map));
-		pixel.x += delta.x;
-		pixel.y += delta.y;
-		pixel.z += delta.z;
-		pixels--;
-	}
-}*/
 
 static void	draw_line(t_fdf *fdf, t_point f, t_point s)
 {

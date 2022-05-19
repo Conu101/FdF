@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 18:58:37 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/18 10:46:03 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/19 12:43:45 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ t_map	*map_init(void)
 	map->x_offset = 0;
 	map->y_offset = 0;
 	map->x_min = 0;
-	map->x_max = 1;
+	map->x_max = 0;
 	map->y_min = 0;
-	map->y_max = 1;
+	map->y_max = 0;
 
 	return (map);
 }

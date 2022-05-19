@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:21:14 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/18 12:34:44 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:25:19 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,41 @@
 #include "libft.h"
 
 /*
+** Calculate z_divisor. z_div = z_range if both z_min and z_max 
+** are same sign, otherwise z_div = smallest abs value.
+static int	z_div(t_map *map)
+
+static int	z_div(t_map *map)
+{
+	int	z_div;
+
+	if (map->z_min >= 0 || map->z_max <= 0)
+		z_div = 0.25 * map->z_range;
+	else
+		z_div = 0.5 * ft_imin(ft_abs(map->z_min), map->z_max);
+	return (z_div);
+}
+*/
+static double	z_div(t_map *map)
+{
+	double	z_div;
+
+	z_div = 10 * map->z_range / ft_imin(map->width, map->height);
+	return (z_div);
+}
+
+/*
+** Calculate zoom so all points fit in the map
+*/
+static double	get_zoom(t_map *map)
+{
+	double	zoom;
+
+	zoom = 0.75 * (ft_imin(WIDTH / map->width, HEIGHT / map->height));
+	return (zoom);
+}
+
+/*
 ** Set zoom, x_and y_offset so that the image remains within
 ** 9/10 of the screen in all directions
 */
@@ -28,8 +63,9 @@ void	set_proj_param(t_map *map, t_fdf *fdf)
 	int		x;
 	int		y;
 	t_point	point;
-	int		resize;
 
+	map->z_divisor = z_div(map);
+	map->zoom = get_zoom(map);
 	map->x_min = 0.1;
 	map->x_max = map->width - 0.1;
 	map->y_min = 0.1;
@@ -54,9 +90,6 @@ void	set_proj_param(t_map *map, t_fdf *fdf)
 			}
 		}
 	}
-	//map->x_offset = 0.3 * (ft_imin(map->width, map->height)) - map->x_min;
-	//map->y_offset = 0.3 * (ft_imin(map->width, map->height)) - map->y_min;
-	resize = ft_imin(map->width / ft_abs(map->x_max - map->x_min), \
-	map->height / ft_abs(map->y_max - map->y_min));
-	map->zoom = 0.8 * resize * (ft_imin(WIDTH / map->width, HEIGHT / map->height));
+	map->x_offset = -map->x_min + 0.05 * WIDTH;
+	map->y_offset = -map->y_min + 0.05 * HEIGHT;
 }
