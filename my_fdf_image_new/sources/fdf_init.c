@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:14:19 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/19 16:45:34 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:58:18 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 #include "fdf.h"
 #include "libft.h"
-#include "mlx.h"
+//#include "mlx.h"
 #include "errors.h"
 
 /*

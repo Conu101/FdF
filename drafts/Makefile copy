@@ -6,20 +6,25 @@
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 16:55:49 by ctrouve           #+#    #+#              #
-#    Updated: 2022/05/20 17:03:04 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/05/20 16:54:11 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-CC = gcc 
+CC = gcc
 FLAGS = -Wall -Werror -Wextra
-LIBRARIES = -lft -L$(LIBFT_DIRECTORY) -lmlx -framework OpenGL -framework AppKit
-INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS)
+LIBRARIES = -lft -L$(LIBFT_DIRECTORY) -lmlx -L$(MINILIBX_DIRECTORY) \
+-framework OpenGL -framework AppKit
+INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 
 LIBFT = $(LIBFT_DIRECTORY)libft.a
 LIBFT_DIRECTORY = ./libft/
 LIBFT_HEADERS = $(LIBFT_DIRECTORY)includes/
+
+MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
+MINILIBX_DIRECTORY = ./minilibx_macos/
+MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 
 HEADERS_LIST = fdf.h\
 	color.h\
@@ -55,7 +60,7 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS)
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJECTS_DIRECTORY) $(OBJECTS)
 	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
@@ -72,13 +77,20 @@ $(LIBFT):
 	@echo "$(NAME): $(GREEN)Creating $(LIBFT)...$(RESET)"
 	@$(MAKE) -sC $(LIBFT_DIRECTORY)
 
+$(MINILIBX):
+	@echo "$(NAME): $(GREEN)Creating $(MINILIBX)...$(RESET)"
+	@$(MAKE) -sC $(MINILIBX_DIRECTORY)
+
 clean:
 	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
+	@$(MAKE) -sC $(MINILIBX_DIRECTORY) clean
 	@rm -rf $(OBJECTS_DIRECTORY)
 	@echo "$(NAME): $(ORANGE)$(OBJECTS_DIRECTORY) was deleted$(RESET)"
 	@echo "$(NAME): $(ORANGE)object files were deleted$(RESET)"
 
 fclean: clean
+	@rm -f $(MINILIBX)
+	@echo "$(NAME): $(ORANGE)$(MINILIBX) was deleted$(RESET)"
 	@rm -f $(LIBFT)
 	@echo "$(NAME): $(ORANGE)$(LIBFT) was deleted$(RESET)"
 	@rm -f $(NAME)

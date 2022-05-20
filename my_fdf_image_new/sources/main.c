@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:57:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/19 17:30:36 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:59:04 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@
 ** "errors.h" for ERR macros
 ** <fcntl.h> for open() and O_RDONLY
 ** <stdlib> for exit
-** <errno.h> for errno value
 */
 
 #include "fdf.h"
-#include "mlx.h"
+//#include "mlx.h"
 #include "errors.h"
 #include <fcntl.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include <stdlib.h>
-#include <errno.h>
 
 
 /*
@@ -68,7 +66,6 @@ int	main(int argc, char **argv)
 	t_coord		*coords_stack;
 	t_fdf		*fdf;
 
-	errno = 0;
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);

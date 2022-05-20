@@ -6,13 +6,15 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:48:00 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/20 16:50:17 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:03:37 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 
 # define FDF_H
+
+#include <mlx.h>
 
 # define HEIGHT			1080
 # define WIDTH			1920
