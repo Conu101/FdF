@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/06/01 13:54:11 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/31 14:19:34 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 #include "fdf.h"
 #include "libft.h"
+#include "mlx.h"
 #include "color.h"
 
 /*
@@ -105,10 +106,10 @@ static void	draw_grid(t_map *map, t_fdf *fdf)
 	t_point	begin;
 	t_point	end;
 
-	y = -1;
+	y = 0;
 	while (++y <= map->height - 1)
 	{
-		x = -1;
+		x = 0;
 		while (++x <= map->width - 1)
 		{
 			if (x < map->width - 1)

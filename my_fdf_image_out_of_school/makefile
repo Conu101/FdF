@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#     Makefile_with_minilibx                            :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/12 16:55:49 by ctrouve           #+#    #+#              #
-#    Updated: 2022/05/23 16:17:22 by ctrouve          ###   ########.fr        #
+#    Updated: 2022/05/31 14:20:26 by ctrouve          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT_DIRECTORY = ./libft/
 LIBFT_HEADERS = $(LIBFT_DIRECTORY)includes/
 
 MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
-MINILIBX_DIRECTORY = ./out_of_school_minilibx_macos/
+MINILIBX_DIRECTORY = ./minilibx_macos/
 MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 
 HEADERS_LIST = fdf.h\
@@ -99,3 +99,4 @@ fclean: clean
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
+	
