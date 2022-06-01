@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/23 16:11:01 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/23 17:35:52 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,10 @@ static void	draw_grid(t_map *map, t_fdf *fdf)
 	t_point	begin;
 	t_point	end;
 
-	y = 0;
+	y = -1;
 	while (++y <= map->height - 1)
 	{
-		x = 0;
+		x = -1;
 		while (++x <= map->width - 1)
 		{
 			if (x < map->width - 1)

@@ -6,7 +6,7 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:36:23 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/23 16:08:45 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/23 18:14:23 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 #include "libft.h"
 #include "fdf.h"
+#include "errors.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -29,7 +30,8 @@
 
 void	terminate(char *s)
 {
-	perror(s);
+	ft_putendl(s);
+	ft_putendl(ERR_USAGE);
 	exit(1);
 }
 

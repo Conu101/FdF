@@ -6,28 +6,30 @@
 /*   By: ctrouve <ctrouve@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:57:31 by ctrouve           #+#    #+#             */
-/*   Updated: 2022/05/23 14:51:57 by ctrouve          ###   ########.fr       */
+/*   Updated: 2022/05/23 17:53:02 by ctrouve          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** "fdf.h" for t_map type, t_coord type, t_fdf type, terminate(),
 **  and fdf() functions in main
-** "mlx.h" for mlx_destroy_window(), mlx_key_hook() and mlx_loop()
+** "mlx.h" for mlx_destroy_window(), mlx_key_hook() and mlx_loop() if out of
+** school -> use the other Makefile
 ** "errors.h" for ERR macros
 ** <fcntl.h> for open() and O_RDONLY
 ** <stdlib> for exit
 */
 
-#include "fdf.h"
 //#include "mlx.h"
+#include "fdf.h"
 #include "errors.h"
 #include <fcntl.h>
-//#include <unistd.h>
 #include <stdlib.h>
 
 /*
 ** Change projection type: I (key 34) = iso; P (key 35) = parallel.
+** Leaks can be tested with a line "system("leaks fdf");" before draw_img()
+** line 40.
 */
 static void	switch_projection(int keycode, t_fdf *fdf)
 {
@@ -35,13 +37,13 @@ static void	switch_projection(int keycode, t_fdf *fdf)
 		fdf->projection = 1;
 	else if (keycode == 35)
 		fdf->projection = 0;
-	system("leaks fdf");
 	draw_img(fdf->map, fdf);
 }
 
 /*
-** React to key press
-** Leaks can be tested with a line "system("leaks fdf");" before exit(1).
+** React to key press to either switch projection or close the prgm.
+** Leaks can be tested with a line "system("leaks fdf");" before exit(0) 
+** line 55.
 */
 static int	key_press(int key, void *param)
 {
@@ -49,8 +51,7 @@ static int	key_press(int key, void *param)
 
 	fdf = (t_fdf *)param;
 	if (key == 53)
-	{	
-		system("leaks fdf");
+	{
 		exit(0);
 	}
 	else if (key == 34 || key == 35)
@@ -81,6 +82,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		terminate(ERR_USAGE);
-	system("leaks fdf");
 	exit(0);
 }
