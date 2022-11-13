@@ -74,27 +74,38 @@ Points are linked via colored links on 5 levels of relative altitude:
 For example the following file describing a pyramide:
 
 <a href="https://github.com/conu101/FdF">
-    <img src="images/fdf_pyra_txt.png" alt="pyra_txt" width="290" height="340">
+    <img src="images/fdf_pyra_txt.png" alt="pyra_txt" width="581" height="600">
 </a>
 
 note that the points of altitude "8" are also hardcoded to be white independantly of their altitude. The rest of the points will be colorcoded based off their value:
 
+  <br />
+  <br />
+
 Resut in parallel projection:
 
 <a href="https://github.com/conu101/FdF">
-    <img src="images/fdf_pyram_para.png" alt="pyra_para" width="290" height="340">
+    <img src="images/fdf_pyram_para.png" alt="pyra_para" width="439" height="451">
 </a>
+
+  <br />
+  <br />
+  <br />
 
 and in isometric projection (switch with keypress I/P between projections during execution):
 
 <a href="https://github.com/conu101/FdF">
-    <img src="images/fdf_pyram_iso.png" alt="pyra_iso" width="290" height="340">
+    <img src="images/fdf_pyram_iso.png" alt="pyra_iso" width="676" height="463">
 </a>
+
+  <br />
+  <br />
+  <br />
 
 The main steps to succeed in the FdF project were:
 
-interpersonal: 
-* it was a solo project with a steep learning curve so the time organization was crucial
+personal: 
+* it was a solo project with a steep learning curve so time management was crucial
 * I was not yet comfortable with the graphical interface commands, in particular the management of events, during this project but the next project consolidified my newly acquired skills.
 
 technical:
@@ -120,7 +131,7 @@ This project unlocked my interest for graphics. I particularly enjoyed the debug
 
 The project can be set up locally by downloading or cloning the repository. It has been built on and for macos so its functionality is not guaranteed on other operating systems.
 
-The project required the use of the static library libft.a coded during the previous project. The libft version used in this projct is the version I had put together in that time, much more limited than the currently available version that has been updated since.
+The project required the use of the static library libft.a coded during the previous project. The libft version used in this project is the version I had put together in that time, much more limited than the currently available version that has been updated since.
 See libft project -> [https://github.com/conu101/libft](https://github.com/conu101/libft)
 
 The graphics library minilibx is included in this repository (macos version) and will be compiled with the project by the makefile.
@@ -158,21 +169,29 @@ The executable "fdf" is available in this repo for direct use, but the project c
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-	```sh
+
 	user@usermachine fdf_git % ./fdf maps/42.fdf
-	```
+
 
 Resut in isometric projection:
 
 <a href="https://github.com/conu101/FdF">
-    <img src="images/fdf_42_iso.png" alt="42_iso" width="290" height="340">
+    <img src="images/fdf_42_iso.png" alt="42_iso" width="951" height="546">
 </a>
+
+  <br />
+  <br />
+  <br />
 
 More complex files can be processed, for example the map <mars> presenting a section of the planet surface:
 
 <a href="https://github.com/conu101/FdF">
-    <img src="images/fdf_mars.png" alt="mars_iso" width="290" height="340">
+    <img src="images/fdf_mars.png" alt="mars_iso" width="951" height="546">
 </a>
+
+  <br />
+  <br />
+  <br />
 
 All files added in the maps folder can be tried, and new maps can be imagined as well, have fun!
 
