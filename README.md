@@ -62,9 +62,9 @@ Let's open a window, light a pixel and deal with events linked to this window an
 
 The program accepts text file as argument with the following format:
 
-all lines must have same width
-all columns must have same height
-each point of the map is defined by an integer whose value determines the altitude of the point.
+* all lines must have same width
+* all columns must have same height
+* each point of the map is defined by an integer whose value determines the altitude of the point.
 
 Points are linked via colored links on 5 levels of relative altitude:
 
